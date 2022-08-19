@@ -25,8 +25,8 @@ public class Tabla{
     public class Record {
        
         private SimpleStringProperty carnet, nombre, correo, telefono, 
-        nickname, tipo, examenes, promedioquiz, promediotareas, proyecto1, proyecto2,
-        proyecto3, promedioP;
+        nickname, tipo, promedioExamenes, promedioQuiz, promedioTareas, proyecto1, proyecto2,
+        proyecto3, promedioProyectos, promedioEvaluaciones, promedioFinal;
  
         public String getCarnet() {
             return carnet.get();
@@ -52,16 +52,16 @@ public class Tabla{
             return tipo.get();
         }
 
-        public String getExamenes() {
-            return examenes.get();
+        public String getPromedioExamenes() {
+            return promedioExamenes.get();
         }
 
-        public String getPromedioquiz() {
-            return promedioquiz.get();
+        public String getPromedioQuiz() {
+            return promedioQuiz.get();
         }
 
-        public String getPromediotareas() {
-            return promediotareas.get();
+        public String getPromedioTareas() {
+            return promedioTareas.get();
         }
 
         public String getProyecto1() {
@@ -76,16 +76,25 @@ public class Tabla{
             return proyecto3.get();
         }
 
-        public String getPromedioP() {
-            return promedioP.get();
+        public String getPromedioProyectos(){
+            return promedioProyectos.get();
         }
+
+        public String getPromedioEvaluaciones() {
+            return promedioEvaluaciones.get();
+        }
+
+        public String getPromedioFinal() {
+            return promedioFinal.get();
+        }
+        
         
 
  
         Record(String carnet, String nombre, String correo, String telefono,
-                String nickname, String tipo, String examenes, String promedioquiz, 
-                String promediotareas, String proyecto1, String proyecto2, String proyecto3,
-                String promedioP) {
+                String nickname, String tipo, String promedioExamenes, String promedioQuiz, 
+                String promedioTareas, String proyecto1, String proyecto2, String proyecto3,
+                String promedioProyectos, String promedioEvaluaciones, String promedioFinal) {
 
             this.carnet = new SimpleStringProperty(carnet);
             this.nombre = new SimpleStringProperty(nombre);
@@ -93,13 +102,15 @@ public class Tabla{
             this.telefono = new SimpleStringProperty(telefono);
             this.nickname = new SimpleStringProperty(nickname);
             this.tipo = new SimpleStringProperty(tipo);
-            this.examenes= new SimpleStringProperty(examenes);
-            this.promedioquiz= new SimpleStringProperty(promedioquiz);
-            this.promediotareas= new SimpleStringProperty(promediotareas);
+            this.promedioExamenes= new SimpleStringProperty(promedioExamenes);
+            this.promedioQuiz= new SimpleStringProperty(promedioQuiz);
+            this.promedioTareas= new SimpleStringProperty(promedioTareas);
             this.proyecto1= new SimpleStringProperty(proyecto1);
             this.proyecto2= new SimpleStringProperty(proyecto2);
             this.proyecto3= new SimpleStringProperty(proyecto3);
-            this.promedioP= new SimpleStringProperty(promedioP);
+            this.promedioProyectos= new SimpleStringProperty(promedioProyectos);
+            this.promedioEvaluaciones= new SimpleStringProperty(promedioEvaluaciones);
+            this.promedioFinal= new SimpleStringProperty(promedioFinal);
             
         }
  
@@ -117,44 +128,50 @@ public class Tabla{
  
         Group root = new Group();
  
-        TableColumn<Record, String> CarnetColumn = new TableColumn<Record, String>("carnet");
+        TableColumn<Record, String> CarnetColumn = new TableColumn<Record, String>("Carnét");
         CarnetColumn.setCellValueFactory(new PropertyValueFactory<>("carnet"));
  
-        TableColumn<Record, String> NombreColumn = new TableColumn<Record, String>("nombre");
+        TableColumn<Record, String> NombreColumn = new TableColumn<Record, String>("Nombre y apellidos");
         NombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
  
-        TableColumn<Record, String> CorreoColumn = new TableColumn<Record, String>("correo");
+        TableColumn<Record, String> CorreoColumn = new TableColumn<Record, String>("Correo");
         CorreoColumn.setCellValueFactory(new PropertyValueFactory<>("correo"));
  
-        TableColumn<Record, String> TelefonoColumn = new TableColumn<Record, String>("telefono");
+        TableColumn<Record, String> TelefonoColumn = new TableColumn<Record, String>("Teléfono");
         TelefonoColumn.setCellValueFactory(new PropertyValueFactory<>("telefono"));
  
-        TableColumn<Record, String> NicknameColumn = new TableColumn<Record, String>("nickname");
+        TableColumn<Record, String> NicknameColumn = new TableColumn<Record, String>("Nickname");
         NicknameColumn.setCellValueFactory(new PropertyValueFactory<>("nickname"));
  
-        TableColumn<Record, String> TipoColumn = new TableColumn<Record, String>("tipo");
+        TableColumn<Record, String> TipoColumn = new TableColumn<Record, String>("Tipo de estudiante");
         TipoColumn.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
-        TableColumn<Record, String> ExamenesColumn= new TableColumn<Record, String>("examenes");
-        ExamenesColumn.setCellValueFactory(new PropertyValueFactory<>("examenes"));
+        TableColumn<Record, String> ExamenesColumn= new TableColumn<Record, String>("Nota promedio (examenes)");
+        ExamenesColumn.setCellValueFactory(new PropertyValueFactory<>("promedioExamenes"));
 
-        TableColumn<Record, String> PromedioquizColumn= new TableColumn<Record, String>("promedioquiz");
-        PromedioquizColumn.setCellValueFactory(new PropertyValueFactory<>("promedioquiz"));
+        TableColumn<Record, String> PromedioquizColumn= new TableColumn<Record, String>("Nota promedio (quices)");
+        PromedioquizColumn.setCellValueFactory(new PropertyValueFactory<>("promedioQuiz"));
 
-        TableColumn<Record, String> PromediotareasColumn= new TableColumn<Record, String>("promediotareas");
-        PromediotareasColumn.setCellValueFactory(new PropertyValueFactory<>("promediotareas"));
+        TableColumn<Record, String> PromediotareasColumn= new TableColumn<Record, String>("Nota promedio (tareas)");
+        PromediotareasColumn.setCellValueFactory(new PropertyValueFactory<>("promedioTareas"));
 
-        TableColumn<Record, String> Proyecto1Column= new TableColumn<Record, String>("proyecto1");
+        TableColumn<Record, String> Proyecto1Column= new TableColumn<Record, String>("Nota proyecto #1");
         Proyecto1Column.setCellValueFactory(new PropertyValueFactory<>("proyecto1"));
 
-        TableColumn<Record, String> Proyecto2Column= new TableColumn<Record, String>("proyecto2");
+        TableColumn<Record, String> Proyecto2Column= new TableColumn<Record, String>("Nota proyecto #2");
         Proyecto2Column.setCellValueFactory(new PropertyValueFactory<>("proyecto2"));
 
-        TableColumn<Record, String> Proyecto3Column= new TableColumn<Record, String>("proyecto3");
+        TableColumn<Record, String> Proyecto3Column= new TableColumn<Record, String>("Nota proyecto #3");
         Proyecto3Column.setCellValueFactory(new PropertyValueFactory<>("proyecto3"));
 
-        TableColumn<Record, String> PromedioPColumn= new TableColumn<Record, String>("Promedio de Proyecto");
-        PromedioPColumn.setCellValueFactory(new PropertyValueFactory<>("promedioP"));
+        TableColumn<Record, String> PromedioProyectosColumn= new TableColumn<Record, String>("Nota Promedio (proyectos)");
+        PromedioProyectosColumn.setCellValueFactory(new PropertyValueFactory<>("promedioProyectos"));
+
+        TableColumn<Record, String> PromedioEvaluacionesColumn= new TableColumn<Record, String>("Note Promedio (exámenes, quices, tareas)");
+        PromedioEvaluacionesColumn.setCellValueFactory(new PropertyValueFactory<>("promedioEvaluaciones"));
+
+        TableColumn<Record, String> PromedioFinalColumn= new TableColumn<Record, String>("Nota Final");
+        PromedioFinalColumn.setCellValueFactory(new PropertyValueFactory<>("promedioFinal"));
 
 
 
@@ -175,7 +192,9 @@ public class Tabla{
         tableView.getColumns().add(Proyecto1Column);
         tableView.getColumns().add(Proyecto2Column);
         tableView.getColumns().add(Proyecto3Column);
-        tableView.getColumns().add(PromedioPColumn);
+        tableView.getColumns().add(PromedioProyectosColumn);
+        tableView.getColumns().add(PromedioEvaluacionesColumn);
+        tableView.getColumns().add(PromedioFinalColumn);
 
  
         VBox vBox = new VBox();
@@ -184,7 +203,7 @@ public class Tabla{
  
         root.getChildren().add(vBox);
  
-        primaryStage.setScene(new Scene(root, 700, 250));
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
  
         LeerArchivo(archivo);
@@ -215,16 +234,35 @@ public class Tabla{
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(FieldDelimiter, -1);
 
-                String PromedioP= "";
+
+                String PromedioProyectos= "";
+                String PromedioEvaluaciones= "";
+                String PromedioF= "";
+
                 char TipodeEstudiante= fields[5].charAt(0);
                 
                 if(TipodeEstudiante!='A'){
-                    PromedioP= ((Integer.parseInt(fields[9])+
-                Integer.parseInt(fields[10])+Integer.parseInt(fields[11]))/3)+"";
+                    PromedioProyectos= ((Math.round((Double.parseDouble(fields[9])+
+                    Double.parseDouble(fields[10])+Double.parseDouble(fields[11]))/3)*100.0)/100.0)+"";
+
+                    PromedioF= ((Math.round((Double.parseDouble(PromedioProyectos)+Double.parseDouble(fields[6])+
+                    Double.parseDouble(fields[7])+Double.parseDouble(fields[8]))/4)*100.0)/100.0)+""; 
+                   
+                } 
+
+                else{
+                    PromedioEvaluaciones= ((Math.round((Double.parseDouble(fields[6])+
+                    Double.parseDouble(fields[7])+Double.parseDouble(fields[8]))/3)*100)/100)+"";
+
+                    PromedioF= ((Math.round((Double.parseDouble(PromedioEvaluaciones)+Double.parseDouble(fields[9])+
+                    Double.parseDouble(fields[10])+Double.parseDouble(fields[11]))/4)*100.0)/100.0)+"";
                 }
+
+
                 Record record = new Record(fields[0], fields[1], fields[2],
                         fields[3], fields[4], fields[5], fields[6], fields[7],
-                        fields[8], fields[9], fields[10], fields[11], PromedioP);
+                        fields[8], fields[9], fields[10], fields[11], PromedioProyectos, 
+                        PromedioEvaluaciones, PromedioF);
                 dataList.add(record);
  
             }
