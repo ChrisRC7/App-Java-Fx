@@ -30,14 +30,6 @@
             "vmArgs": "--module-path \"C:/Program Files/java/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
         },
 
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "projectName": "Main_78baa2b8",
-            "vmArgs": "--module-path \"C:/Program Files/java/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
-
-
-        }
+    
     ]
 }
