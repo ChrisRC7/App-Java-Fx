@@ -4,13 +4,9 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "Launch leer",
-            "request": "launch",
-            "mainClass": "controlador.leer",
-            "projectName": "App-Java-Fx_78baa2b8"
-        },
+
+
+        
         {
             "type": "java",
             "name": "Launch Interfaz",
@@ -21,17 +17,27 @@
         },
         {
             "type": "java",
-            "name": "Launch Cargar",
-            "request": "launch",
-            "mainClass": "controlador.Cargar",
-            "projectName": "App-Java-Fx_78baa2b8",
-            "vmArgs": "--module-path \"C:/Program Files/java/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
-        },
-        {
-            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "App-Java-Fx_78baa2b8",
+            "vmArgs": "--module-path \"C:/Program Files/java/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "projectName": "Main_78baa2b8",
+            "vmArgs": "--module-path \"C:/Program Files/java/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+
+
         }
     ]
 }
