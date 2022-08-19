@@ -20,12 +20,21 @@ public class Interfaz extends Application {
 
 
    
+  
+  /** 
+   * @param args
+   */
   public static void main(String[] args) {
       launch(args);
       
       
   }
   
+  
+  /** 
+   * @param pantalla_inicial
+   * @throws IOException
+   */
   @Override
   public void start(Stage pantalla_inicial) throws IOException {
     Tabla datos= new Tabla();
@@ -42,6 +51,7 @@ public class Interfaz extends Application {
       btn.setText("Say 'Hello World'");
       btn.setOnAction(new EventHandler<ActionEvent>() {
 
+
           @Override
           public void handle(ActionEvent event) {
             String ruta = Cargar.rutaArchivo();
@@ -56,7 +66,7 @@ public class Interfaz extends Application {
       StackPane root = new StackPane();
       root.getChildren().add(Archivo);
       root.getChildren().add(btn);
-      pantalla_inicial.setScene(new Scene(root, 800, 500));
+      pantalla_inicial.setScene(new Scene(root, 1300, 500));
 
 
 

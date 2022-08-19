@@ -14,11 +14,20 @@ public class Cargar {
 
     static String ruta=null;
     
+    
+    /** 
+     * @return String
+     */
     public static String rutaArchivo(){
         return ruta;
     }
         
 
+    
+    /** 
+     * @param stage
+     * @return VBox
+     */
     public static VBox CrearBoton(Stage stage) {
 
         try{

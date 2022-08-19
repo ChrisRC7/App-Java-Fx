@@ -122,11 +122,16 @@ public class Tabla{
  
    
 
-    public void IniciarTable(Stage primaryStage, String archivo) {
+    
+    /** 
+     * @param InterfazTabla
+     * @param archivo
+     */
+    public void IniciarTable(Stage InterfazTabla, String archivo) {
         
-        primaryStage.setTitle("CVS");
+        InterfazTabla.setTitle("Tabla de datos de estudiantes");
  
-        Group root = new Group();
+        Group Columnas = new Group();
  
         TableColumn<Record, String> CarnetColumn = new TableColumn<Record, String>("Carnét");
         CarnetColumn.setCellValueFactory(new PropertyValueFactory<>("carnet"));
@@ -197,14 +202,14 @@ public class Tabla{
         tableView.getColumns().add(PromedioFinalColumn);
 
  
-        VBox vBox = new VBox();
-        vBox.setSpacing(10);
-        vBox.getChildren().add(tableView);
+        VBox TablaInterfaz = new VBox();
+        TablaInterfaz.setSpacing(10);
+        TablaInterfaz.getChildren().add(tableView);
  
-        root.getChildren().add(vBox);
+        Columnas.getChildren().add(TablaInterfaz);
  
-        primaryStage.setScene(new Scene(root, 800, 500));
-        primaryStage.show();
+        InterfazTabla.setScene(new Scene(Columnas, 1300, 500));
+        InterfazTabla.show();
  
         LeerArchivo(archivo);
     }
@@ -217,53 +222,67 @@ public class Tabla{
   
     
  
+    
+    /** 
+     * @param Archivo
+     */
     public void LeerArchivo(String Archivo) {
- 
-        //String CsvFile ="C:/Users/chris/Desktop/Materia/Algoritmo y Estructuras de Datos 1/Tarea 1/ejemplo_TEq.csv";
-        String FieldDelimiter = ",";
-        BufferedReader br;
+
+        String delimitador = ",";
+        BufferedReader arhivocsv;
 
         
  
         try {
-            br = new BufferedReader(new FileReader(Archivo));
+            arhivocsv = new BufferedReader(new FileReader(Archivo));
 
             //Esta linea es para saltarse el encabezado
-            br.readLine();
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] fields = line.split(FieldDelimiter, -1);
+            arhivocsv.readLine();
+
+
+            String linea;
+            while ((linea = arhivocsv.readLine()) != null) {
+                String[] datos = linea.split(delimitador, -1);
 
 
                 String PromedioProyectos= "";
                 String PromedioEvaluaciones= "";
                 String PromedioF= "";
 
-                char TipodeEstudiante= fields[5].charAt(0);
+                char TipodeEstudiante= datos[5].charAt(0);
                 
                 if(TipodeEstudiante!='A'){
-                    PromedioProyectos= ((Math.round((Double.parseDouble(fields[9])+
-                    Double.parseDouble(fields[10])+Double.parseDouble(fields[11]))/3)*100.0)/100.0)+"";
+                    Double resultado1= (Double.parseDouble(datos[9])+
+                    Double.parseDouble(datos[10])+Double.parseDouble(datos[11]))/3;
 
-                    PromedioF= ((Math.round((Double.parseDouble(PromedioProyectos)+Double.parseDouble(fields[6])+
-                    Double.parseDouble(fields[7])+Double.parseDouble(fields[8]))/4)*100.0)/100.0)+""; 
+                    Double resultado2= (resultado1+Double.parseDouble(datos[6])+
+                    Double.parseDouble(datos[7])+Double.parseDouble(datos[8]))/4;
+
+                    PromedioProyectos=  Math.round(resultado1*100.0)/100.0+"";
+
+                    PromedioF= Math.round(resultado2*100.0)/100.0+"";
                    
                 } 
 
                 else{
-                    PromedioEvaluaciones= ((Math.round((Double.parseDouble(fields[6])+
-                    Double.parseDouble(fields[7])+Double.parseDouble(fields[8]))/3)*100)/100)+"";
+                    Double resultado1= (Double.parseDouble(datos[6])+
+                    Double.parseDouble(datos[7])+Double.parseDouble(datos[8]))/3;
 
-                    PromedioF= ((Math.round((Double.parseDouble(PromedioEvaluaciones)+Double.parseDouble(fields[9])+
-                    Double.parseDouble(fields[10])+Double.parseDouble(fields[11]))/4)*100.0)/100.0)+"";
+                    Double resultado2= (resultado1+Double.parseDouble(datos[9])+
+                    Double.parseDouble(datos[10])+Double.parseDouble(datos[11]))/4;
+
+
+                    PromedioEvaluaciones= Math.round(resultado1*100.0)/100.0+"";
+
+                    PromedioF= Math.round(resultado2*100.0)/100.0+"";
                 }
 
 
-                Record record = new Record(fields[0], fields[1], fields[2],
-                        fields[3], fields[4], fields[5], fields[6], fields[7],
-                        fields[8], fields[9], fields[10], fields[11], PromedioProyectos, 
+                Record Datos_para_la_tabla = new Record(datos[0], datos[1], datos[2],
+                        datos[3], datos[4], datos[5], datos[6], datos[7],
+                        datos[8], datos[9], datos[10], datos[11], PromedioProyectos, 
                         PromedioEvaluaciones, PromedioF);
-                dataList.add(record);
+                dataList.add(Datos_para_la_tabla);
  
             }
  
