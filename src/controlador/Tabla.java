@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,10 +22,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
  
 
-public class Tabla{
+public class Tabla extends Application{
+
  
     public class Record {
        
+        //Encapsulación 
         private SimpleStringProperty carnet, nombre, correo, telefono, 
         nickname, tipo, promedioExamenes, promedioQuiz, promedioTareas, proyecto1, proyecto2,
         proyecto3, promedioProyectos, promedioEvaluaciones, promedioFinal;
@@ -127,7 +131,7 @@ public class Tabla{
      * @param InterfazTabla
      * @param archivo
      */
-    public void IniciarTable(Stage InterfazTabla, String archivo) {
+    public void Table(Stage InterfazTabla, String archivo) {
         
         InterfazTabla.setTitle("Tabla de datos de estudiantes");
  
@@ -294,6 +298,26 @@ public class Tabla{
                     .log(Level.SEVERE, null, ex);
         }
  
+    }
+
+
+
+
+
+
+
+
+
+
+    //Esto esta para que no me tire error pero en realida no hace nada
+    /** 
+     * @param arg0
+     * @throws Exception
+     */
+    @Override
+    public void start(Stage arg0) throws Exception {
+        // TODO Auto-generated method stub
+        
     }
  
 

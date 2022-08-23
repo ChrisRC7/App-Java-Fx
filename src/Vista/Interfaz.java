@@ -1,7 +1,7 @@
 package Vista;
 
 
-import javafx.application.Application;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import controlador.*;
 
-public class Interfaz extends Application {
+public class Interfaz extends Tabla {
 
 
    
@@ -37,7 +37,7 @@ public class Interfaz extends Application {
    */
   @Override
   public void start(Stage pantalla_inicial) throws IOException {
-    Tabla datos= new Tabla();
+
 
   
     
@@ -46,27 +46,28 @@ public class Interfaz extends Application {
       //Se hace uso de la clase cargar
       VBox Archivo = Cargar.CrearBoton(pantalla_inicial);
 
-      pantalla_inicial.setTitle("Hello World!");
-      Button btn = new Button();
-      btn.setText("Say 'Hello World'");
-      btn.setOnAction(new EventHandler<ActionEvent>() {
+      pantalla_inicial.setTitle("Menu de Inicio");
+      Button boton = new Button();
+      boton.setText("Cargar archivo");
+      boton.setOnAction(new EventHandler<ActionEvent>() {
 
 
           @Override
           public void handle(ActionEvent event) {
-            String ruta = Cargar.rutaArchivo();
+            //Sobrecarga
+            String ruta = Cargar.Table();
             if(ruta!=null){
-              datos.IniciarTable(pantalla_inicial, ruta);
+              Table(pantalla_inicial, ruta);
             }
           }
       });
 
       
       
-      StackPane root = new StackPane();
-      root.getChildren().add(Archivo);
-      root.getChildren().add(btn);
-      pantalla_inicial.setScene(new Scene(root, 1300, 500));
+      StackPane ventana = new StackPane();
+      ventana.getChildren().add(Archivo);
+      ventana.getChildren().add(boton);
+      pantalla_inicial.setScene(new Scene(ventana, 1300, 500));
 
 
 

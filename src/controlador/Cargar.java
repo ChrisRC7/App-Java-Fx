@@ -10,7 +10,8 @@ import javafx.event.EventHandler;
 import java.io.*;
 import javafx.stage.FileChooser;
 
-public class Cargar {
+//Abstracción
+public abstract class Cargar {
 
     static String ruta=null;
     
@@ -18,7 +19,7 @@ public class Cargar {
     /** 
      * @return String
      */
-    public static String rutaArchivo(){
+    public static String Table(){
         return ruta;
     }
         
